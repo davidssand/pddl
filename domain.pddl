@@ -21,6 +21,7 @@
         (in-memory ?h - holder ?s - sample ?l - location)
         (place-full ?l - location)
         (move-allowed ?r - robot ?l1 - location ?l2 - location)
+        (pick-allowed ?r - robot ?s - sample)
     )
     
     (:action move
@@ -45,6 +46,7 @@
             (at ?r ?p)
             (has ?p ?s)
             (not (buffer-full ?r))
+            (pick-allowed ?r ?s)
         )
         :effect (and
             (has ?r ?s)

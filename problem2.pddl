@@ -43,21 +43,25 @@
         (has L5 rock) (has L5 dirt)
         (has L6 rock) (has L6 dirt)
 
-        ;Moves move-allowed
+        ;Allowed
         (move-allowed explorer1 L5 L0) (move-allowed explorer1 L0 L5)
         (move-allowed explorer1 L0 L2) (move-allowed explorer1 L2 L0)
         (move-allowed explorer1 L0 L3) (move-allowed explorer1 L3 L0)
         (move-allowed explorer1 L3 L6) (move-allowed explorer1 L6 L3)
         (move-allowed explorer1 L2 trash) (move-allowed explorer1 trash L2)
+        (pick-allowed explorer1 dirt)
 
         (move-allowed explorer2 L3 L0) (move-allowed explorer2 L0 L3)
         (move-allowed explorer2 L0 L2) (move-allowed explorer2 L2 L0)
         (move-allowed explorer2 L2 trash) (move-allowed explorer2 trash L2)
+        (pick-allowed explorer2 rock)
 )
     
     (:goal
         (and
-            (in-memory earth rock L5)
+            (in-memory earth rock L0)
+            (in-memory earth rock L3)
+            (in-memory earth dirt L5)
             (in-memory earth dirt L6)
          )
     )
