@@ -1,0 +1,33 @@
+n robos
+
+robo
+	- Robos coletores de solo e/ou Robos coletores de rocha
+	- (x, y) - pares de locais, onde x é a origem e y o destino
+	- Pode se comunicar com a nave
+	- Nao deve explorar locais ja explorados
+
+Cada robo tem um Buffer
+	- Cabe uma amostra
+	- Pode ser despejada somente no lixao
+
+Local
+	- Cada local pode ser ocupado por apenas um robo ao mesmo tempo.
+
+Lixao
+	- Pode conter varios robos
+	- Pode ser acessado por todos robos
+
+Nave
+	- Esta em um Local
+	- Pode receber informacoes de um robo
+
+Comunicacao
+	- Pode acontecer quando um robo se encontra em um Local anexo a um local de uma nave
+	- Robo cheio
+	- Rotulada com:
+		- Tipo de dado (análise de solo, análise de rocha, imagem)
+		- Local de origem do dado
+
+Goal
+	- Nave receber dados de todos locais ja pre definidos
+	- Enviar dados a Terra
