@@ -6,7 +6,7 @@
         explorer1 explorer2 explorer3 - robot
         nave - startship
         earth-loc nave-loc L0 L2 L3 L4 L5 L6 L7 L8 - place
-        trash - trash
+        tr - trash
         rock dirt - sample
         earth - base-station
     )
@@ -19,14 +19,14 @@
         (at nave nave-loc)
         (at earth earth-loc)
 
-        (place-full L5)
-        (place-full L0)
-        (place-full L7)
-        (place-full earth-loc)
+        (location-full L5)
+        (location-full L0)
+        (location-full L7)
+        (location-full earth-loc)
 
-        ;Allows trash to hold many robots
+        ;Allows tr to hold many robots
         ;Comment out this predicate to see robots comunicating between themselves!
-        (holds-many trash)
+        (holds-many tr)
 
         ;Neighbor positions
         (next nave-loc earth-loc) (next earth-loc nave-loc)
@@ -34,7 +34,7 @@
         (next L7 L8) (next L8 L7)
         (next L7 L2) (next L2 L7)
         (next L7 L3) (next L3 L7)
-        (next L2 trash) (next trash L2)
+        (next L2 tr) (next tr L2)
         (next L5 L2) (next L2 L5)
         (next L0 L2) (next L2 L0)
         (next L0 L5) (next L5 L0)
@@ -56,12 +56,12 @@
         (move-allowed explorer1 L0 L2) (move-allowed explorer1 L2 L0)
         (move-allowed explorer1 L0 L3) (move-allowed explorer1 L3 L0)
         (move-allowed explorer1 L3 L6) (move-allowed explorer1 L6 L3)
-        (move-allowed explorer1 L2 trash) (move-allowed explorer1 trash L2)
+        (move-allowed explorer1 L2 tr) (move-allowed explorer1 tr L2)
         (pick-allowed explorer1 dirt)
 
         (move-allowed explorer2 L3 L0) (move-allowed explorer2 L0 L3)
         (move-allowed explorer2 L0 L2) (move-allowed explorer2 L2 L0)
-        (move-allowed explorer2 L2 trash) (move-allowed explorer2 trash L2)
+        (move-allowed explorer2 L2 tr) (move-allowed explorer2 tr L2)
         (pick-allowed explorer2 rock)
 
         (move-allowed explorer3 L7 L8) (move-allowed explorer3 L8 L7)
