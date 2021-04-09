@@ -8,8 +8,8 @@
     
     (:types
         place trash - location
-        place robot startship earth - holder
-        robot startship earth - obj
+        place robot startship base-station - holder
+        robot startship base-station - obj
         sample
     )
     

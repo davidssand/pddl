@@ -8,7 +8,7 @@
         earth-loc L0 nave-loc L2 L3 L4 L5 L6 - place
         trash - trash
         rock dirt - sample
-        earth - earth
+        earth - base-station
     )
 
     (:init
