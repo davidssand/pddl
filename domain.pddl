@@ -8,17 +8,15 @@
     (:types
         trash - location
         place robot startship - holder
-        sample
+        sample - collectable
     )
     
     (:predicates
         (at ?r - robot ?l - location)
         (next ?l1 ?l2 - location)
-        (has ?h - holder ?s - sample)
-        (origin ?s - sample ?l - location)
+        (has ?h - holder ?c - collectable)
         (is-full ?r - robot)
-        
-        (analysed ?r - robot ?s - sample ?l - location)
+        (memorize ?r - robot ?s - sample ?l - location)
     )
     
     (:action move
@@ -27,7 +25,10 @@
             (at ?r ?l1)
             (next ?l1 ?l2)
         )
-        :effect (and (at ?r ?l2) (not (at ?r ?l1)))
+        :effect (and
+            (at ?r ?l2)
+            (not (at ?r ?l1))
+        )
     )
     
     (:action pick
@@ -37,9 +38,14 @@
             (has ?l ?s)
             (not (is-full ?r))
         )
-        :effect (and (has ?r ?s) (is-full ?r))
+        :effect (and
+            (has ?r ?s)
+            (memorize ?r ?s ?l)
+            (is-full ?r)
+        )
     )
     
+
     (:action drop
         :parameters (?r - robot ?t - trash ?s - sample)
         :precondition (and
@@ -54,8 +60,14 @@
 
     (:action communicate
         :parameters (?r - robot ?rl - location ?st - startship ?sl - location)
-        :precondition (and (next ?rl ?sl) (has ?r ?s))
-        :effect (and (has ?r ?s) (is-full ?r))
+        :precondition (and
+            (next ?rl ?sl)
+            (has ?r ?s)
+        )
+        :effect (and
+            (has ?r ?s)
+            (is-full ?r)
+        )
     )
 )
     

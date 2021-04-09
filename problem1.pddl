@@ -3,7 +3,7 @@
     (:domain robots)
     
     (:objects 
-        explorer - robot
+        explorer1 - robot
         startship - startship
         L0 L1 L2 L3 - location
         trash - trash
@@ -11,7 +11,7 @@
     )
     
     (:init
-        (at explorer L3)
+        (at explorer1 L3)
         (at startship L1)
         
         (next L3 L0)
@@ -35,7 +35,8 @@
     
     (:goal
         (and
-            (has explorer rock)
-        )
+            (memorize explorer1 rock L2)
+            (memorize explorer1 dirt L3)
+         )
     )
 )
