@@ -35,8 +35,8 @@
     
     (:goal
         (and
-            (memorize explorer1 rock L2)
-            (memorize explorer1 dirt L3)
+            (in-memory startship rock L2)
+            (in-memory startship dirt L3)
          )
     )
 )
