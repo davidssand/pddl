@@ -22,6 +22,7 @@
         (place-full ?l - location)
         (move-allowed ?r - robot ?l1 - location ?l2 - location)
         (pick-allowed ?r - robot ?s - sample)
+        (holds-many ?l - location)
     )
     
     (:action move
@@ -29,7 +30,10 @@
         :precondition (and
             (at ?r ?l1)
             (next ?l1 ?l2)
-            (not (place-full ?l2))
+            (or
+                (not (place-full ?l2))
+                (holds-many ?l2)
+            )
             (move-allowed ?r ?l1 ?l2)
         )
         :effect (and

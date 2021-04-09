@@ -22,6 +22,10 @@
         (at earth earth-loc)
         (place-full earth-loc)
 
+        ;Allows trash to hold many robots
+        ;Comment out this predicate to see robots comunicating between themselves!
+        (holds-many trash)
+
         ;Neighbor positions
         (next stsh-loc earth-loc) (next earth-loc stsh-loc)
         (next stsh-loc L2) (next L2 stsh-loc)
