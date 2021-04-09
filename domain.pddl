@@ -3,21 +3,24 @@
     (:requirements
         :strips
         :typing
+        :negative-preconditions
     )
     
     (:types
         place trash - location
         place robot startship earth - holder
+        robot startship earth - obj
         sample
     )
     
     (:predicates
-        (at ?r - robot ?l - location)
+        (at ?o - obj ?l - location)
         (next ?l1 ?l2 - location)
         (has ?h - holder ?s - sample)
         (buffer-full ?r - robot)
         (in-memory ?h - holder ?s - sample ?l - location)
-        (place-full ?p - place)
+        (place-full ?l - location)
+        (allowed ?r - robot ?l1 - location ?l2 - location)
     )
     
     (:action move
@@ -26,6 +29,7 @@
             (at ?r ?l1)
             (next ?l1 ?l2)
             (not (place-full ?l2))
+            (allowed ?r ?l1 ?l2)
         )
         :effect (and
             (at ?r ?l2)
@@ -36,15 +40,15 @@
     )
     
     (:action pick
-        :parameters (?r - robot ?l - location ?s - sample)
+        :parameters (?r - robot ?p - place ?s - sample)
         :precondition (and
-            (at ?r ?l)
-            (has ?l ?s)
+            (at ?r ?p)
+            (has ?p ?s)
             (not (buffer-full ?r))
         )
         :effect (and
             (has ?r ?s)
-            (in-memory ?r ?s ?l)
+            (in-memory ?r ?s ?p)
             (buffer-full ?r)
         )
     )
@@ -63,9 +67,9 @@
 
     (:action communicate
         :parameters 
-           (?sender - holder
+           (?sender - obj
             ?senderl - location
-            ?receiver - holder
+            ?receiver - obj
             ?receiverl - location
             ?s - sample
             ?sl - location)

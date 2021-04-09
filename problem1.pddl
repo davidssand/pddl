@@ -4,8 +4,8 @@
     
     (:objects 
         explorer1 - robot
-        startship - startship
-        earth-loc L0 startship-loc L2 L3 - place
+        stsh - startship
+        earth-loc L0 stsh-loc L2 L3 - place
         trash - trash
         rock dirt - sample
         earth - earth
@@ -15,18 +15,18 @@
         ;Holder positions
         (at explorer1 L3)
         (place-full L3)
-        (at startship startship-loc)
-        (place-full startship-loc)
+        (at stsh stsh-loc)
+        (place-full stsh-loc)
         (at earth earth-loc)
         (place-full earth-loc)
 
         ;Neighbor positions
-        (next startship-loc earth-loc)
-        (next earth-loc startship-loc)
+        (next stsh-loc earth-loc)
+        (next earth-loc stsh-loc)
         (next L3 L0) (next L0 L3)
         (next L0 L2) (next L2 L0)
-        (next startship-loc L2) (next L2 startship-loc)
-        (next startship-loc L3) (next L3 startship-loc)
+        (next stsh-loc L2) (next L2 stsh-loc)
+        (next stsh-loc L3) (next L3 stsh-loc)
         (next L2 trash) (next trash L2)
         
         ;Moves allowed
@@ -40,7 +40,7 @@
         
         ;Samples in positions
         (has L0 rock) (has L0 dirt)
-        (has startship-loc rock) (has startship-loc dirt)
+        (has stsh-loc rock) (has stsh-loc dirt)
         (has L2 rock) (has L2 dirt)
         (has L3 rock) (has L3 dirt)
     )
