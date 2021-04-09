@@ -29,6 +29,15 @@
         (next startship-loc L3) (next L3 startship-loc)
         (next L2 trash) (next trash L2)
         
+        ;Moves allowed
+        (allowed explorer1 L3 L0)
+        (allowed explorer1 L0 L3)
+        (allowed explorer1 L0 L2)
+        (allowed explorer1 L2 L0)
+        (allowed explorer1 L2 trash)
+        (allowed explorer1 trash L2)
+
+        
         ;Samples in positions
         (has L0 rock) (has L0 dirt)
         (has startship-loc rock) (has startship-loc dirt)
