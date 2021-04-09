@@ -15,19 +15,23 @@
         (at ?r - robot ?l - location)
         (next ?l1 ?l2 - location)
         (has ?h - holder ?s - sample)
-        (is-full ?r - robot)
+        (buffer-full ?r - robot)
         (in-memory ?h - holder ?s - sample ?l - location)
+        (place-full ?p - place)
     )
     
     (:action move
-        :parameters (?r - robot ?l1 ?l2 - location)
+        :parameters (?r - robot ?l1 - location ?l2 - location)
         :precondition (and
             (at ?r ?l1)
             (next ?l1 ?l2)
+            (not (place-full ?l2))
         )
         :effect (and
             (at ?r ?l2)
             (not (at ?r ?l1))
+            (not (place-full ?l1))
+            (place-full ?l2)
         )
     )
     
@@ -36,12 +40,12 @@
         :precondition (and
             (at ?r ?l)
             (has ?l ?s)
-            (not (is-full ?r))
+            (not (buffer-full ?r))
         )
         :effect (and
             (has ?r ?s)
             (in-memory ?r ?s ?l)
-            (is-full ?r)
+            (buffer-full ?r)
         )
     )
 
@@ -53,7 +57,7 @@
         )
         :effect (and
             (not (has ?r ?s))
-            (not (is-full ?r))
+            (not (buffer-full ?r))
         )
     )
 
@@ -66,6 +70,8 @@
             ?s - sample
             ?sl - location)
         :precondition (and
+            (at ?sender ?senderl)
+            (at ?receiver ?receiverl)
             (next ?senderl ?receiverl)
             (in-memory ?sender ?s ?sl)
         )

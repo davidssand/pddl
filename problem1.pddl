@@ -5,7 +5,7 @@
     (:objects 
         explorer1 - robot
         startship - startship
-        L0 L1 L2 L3 - location
+        earth-location L0 L1 L2 L3 - place
         trash - trash
         rock dirt - sample
         earth - earth
@@ -14,9 +14,15 @@
     (:init
         ;Holder positions
         (at explorer1 L3)
+        (place-full L3)
         (at startship L1)
-        
+        (place-full L1)
+        (at earth earth-location)
+        (place-full earth-location)
+
         ;Neighbor positions
+        (next L1 earth-location)
+        (next earth-location L1)
         (next L3 L0) (next L0 L3)
         (next L0 L2) (next L2 L0)
         (next L1 L2) (next L2 L1)
@@ -32,8 +38,8 @@
     
     (:goal
         (and
-            (in-memory startship rock L3)
-            (in-memory startship dirt L2)
+            (in-memory earth rock L3)
+            (in-memory earth dirt L2)
          )
     )
 )
