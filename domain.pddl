@@ -20,7 +20,7 @@
         (buffer-full ?r - robot)
         (in-memory ?h - holder ?s - sample ?l - location)
         (place-full ?l - location)
-        (allowed ?r - robot ?l1 - location ?l2 - location)
+        (move-allowed ?r - robot ?l1 - location ?l2 - location)
     )
     
     (:action move
@@ -29,7 +29,7 @@
             (at ?r ?l1)
             (next ?l1 ?l2)
             (not (place-full ?l2))
-            (allowed ?r ?l1 ?l2)
+            (move-allowed ?r ?l1 ?l2)
         )
         :effect (and
             (at ?r ?l2)

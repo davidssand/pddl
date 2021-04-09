@@ -3,8 +3,7 @@
     (:domain robots)
     
     (:objects 
-        explorer1 - robot
-        ;explorer2 - robot
+        explorer1 explorer2 - robot
         stsh - startship
         earth-loc L0 stsh-loc L2 L3 L4 L5 L6 - place
         trash - trash
@@ -13,10 +12,11 @@
     )
 
     (:init
-        ;Holder positions
+        ;Holders positions
         (at explorer1 L5)
         (place-full L5)
-       ; (at explorer2 L0)
+        (at explorer2 L0)
+        (place-full L0)
         (at stsh stsh-loc)
         (place-full stsh-loc)
         (at earth earth-loc)
@@ -43,17 +43,21 @@
         (has L5 rock) (has L5 dirt)
         (has L6 rock) (has L6 dirt)
 
-        ;Moves allowed
-        (allowed explorer1 L5 L0) (allowed explorer1 L0 L5)
-        (allowed explorer1 L0 L2) (allowed explorer1 L2 L0)
-        (allowed explorer1 L0 L3) (allowed explorer1 L3 L0)
-        (allowed explorer1 L3 L6) (allowed explorer1 L6 L3)
-        (allowed explorer1 L2 trash) (allowed explorer1 trash L2)
+        ;Moves move-allowed
+        (move-allowed explorer1 L5 L0) (move-allowed explorer1 L0 L5)
+        (move-allowed explorer1 L0 L2) (move-allowed explorer1 L2 L0)
+        (move-allowed explorer1 L0 L3) (move-allowed explorer1 L3 L0)
+        (move-allowed explorer1 L3 L6) (move-allowed explorer1 L6 L3)
+        (move-allowed explorer1 L2 trash) (move-allowed explorer1 trash L2)
+
+        (move-allowed explorer2 L3 L0) (move-allowed explorer2 L0 L3)
+        (move-allowed explorer2 L0 L2) (move-allowed explorer2 L2 L0)
+        (move-allowed explorer2 L2 trash) (move-allowed explorer2 trash L2)
 )
     
     (:goal
         (and
-            (in-memory earth rock L6)
+            (in-memory earth rock L5)
             (in-memory earth dirt L6)
          )
     )
