@@ -6,7 +6,7 @@
     )
     
     (:types
-        trash - location
+        place trash - location
         place robot startship - holder
         sample
     )
@@ -44,8 +44,6 @@
             (is-full ?r)
         )
     )
-
-    
 
     (:action drop
         :parameters (?r - robot ?t - trash ?s - sample)

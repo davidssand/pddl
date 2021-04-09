@@ -11,8 +11,11 @@
     )
     
     (:init
+        ;Holder positions
         (at explorer1 L3)
         (at startship L1)
+        
+        ;Neighbor positions
         
         (next L3 L0)
         (next L0 L3)
@@ -29,14 +32,22 @@
         (next L2 trash)
         (next trash L2)
         
-        (has L3 dirt)
+        ;Samples in positions
+        
+        (has L0 rock)
+        (has L0 dirt)
+        (has L1 rock)
+        (has L1 dirt)
         (has L2 rock)
+        (has L2 dirt)
+        (has L3 rock)
+        (has L3 dirt)
     )
     
     (:goal
         (and
-            (in-memory startship rock L2)
-            (in-memory startship dirt L3)
+            (in-memory startship rock L3)
+            (in-memory startship dirt L2)
          )
     )
 )
