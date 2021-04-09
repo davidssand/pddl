@@ -4,8 +4,8 @@
     
     (:objects 
         explorer1 explorer2 explorer3 - robot
-        stsh - startship
-        earth-loc stsh-loc L0 L2 L3 L4 L5 L6 L7 L8 - place
+        nave - startship
+        earth-loc nave-loc L0 L2 L3 L4 L5 L6 L7 L8 - place
         trash - trash
         rock dirt - sample
         earth - earth
@@ -16,7 +16,7 @@
         (at explorer1 L5)
         (at explorer2 L0)
         (at explorer3 L7)
-        (at stsh stsh-loc)
+        (at nave nave-loc)
         (at earth earth-loc)
 
         (place-full L5)
@@ -29,8 +29,8 @@
         (holds-many trash)
 
         ;Neighbor positions
-        (next stsh-loc earth-loc) (next earth-loc stsh-loc)
-        (next stsh-loc L8) (next L8 stsh-loc)
+        (next nave-loc earth-loc) (next earth-loc nave-loc)
+        (next nave-loc L8) (next L8 nave-loc)
         (next L7 L8) (next L8 L7)
         (next L7 L2) (next L2 L7)
         (next L7 L3) (next L3 L7)
