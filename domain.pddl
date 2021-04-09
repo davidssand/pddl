@@ -7,7 +7,7 @@
     
     (:types
         place trash - location
-        place robot startship - holder
+        place robot startship earth - holder
         sample
     )
     
@@ -59,18 +59,18 @@
 
     (:action communicate
         :parameters 
-           (?r - robot
-            ?rl - location
-            ?sh - startship
-            ?shl - location
+           (?sender - holder
+            ?senderl - location
+            ?receiver - holder
+            ?receiverl - location
             ?s - sample
             ?sl - location)
         :precondition (and
-            (next ?rl ?shl)
-            (in-memory ?r ?s ?sl)
+            (next ?senderl ?receiverl)
+            (in-memory ?sender ?s ?sl)
         )
         :effect (and
-            (in-memory ?sh ?s ?sl)
+            (in-memory ?receiver ?s ?sl)
         )
     )
 )
